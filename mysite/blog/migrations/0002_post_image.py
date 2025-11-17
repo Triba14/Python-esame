@@ -1,5 +1,3 @@
-# Generated manually for adding image field to Post model
-
 from django.db import migrations, models
 
 
