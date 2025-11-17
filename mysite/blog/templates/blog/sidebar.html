@@ -1,20 +1,27 @@
-<div
-  class="card shadow-sm mt-2 mb-4 border-0 bg-light"
-  style="border-radius: 15px"
->
-  <div
-    class="card-header bg-primary text-white"
-    style="border-radius: 15px 15px 0 0"
-  >
-    <h5 class="card-title mb-0"><i class="bi bi-info-circle"></i> Chi sono</h5>
+{% load static %}
+<link rel="stylesheet" href="{% static 'blog/sidebar.css' %}">
+
+<div class="sidebar-card card" id="about">
+  <div class="sidebar-header">
+    <h5>
+      <i class="bi bi-person-badge"></i>Chi sono
+    </h5>
   </div>
-  <div class="card-body">
-    <p class="card-text mb-3">
-      Giuseppe Tribastone - Studente di Informatica presso Steve Jobs Academy.
-      Orientato al back-end. Appassionato di linux, open source hi-fi.
+  <div class="sidebar-body author-info">
+    <div class="author-avatar">
+      <i class="bi bi-person-fill"></i>
+    </div>
+    <div class="author-name">Giuseppe Tribastone</div>
+    <div class="author-title">
+      <i class="bi bi-mortarboard me-1"></i>Studente di Informatica
+    </div>
+    <p class="author-description">
+      Studente presso <strong>Steve Jobs Academy</strong>, orientato al back-end development. 
+      Appassionato di Linux, open source e hi-fi.
     </p>
-    <a href="https://github.com/Triba14" class="btn btn-primary btn-sm"
-      ><i class="bi bi-github"></i> Github</a
-    >
+    <a href="https://github.com/Triba14" target="_blank" class="social-button" role="button">
+      <i class="bi bi-github"></i>
+      <span>GitHub</span>
+    </a>
   </div>
 </div>

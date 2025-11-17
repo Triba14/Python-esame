@@ -1,43 +1,143 @@
-{% extends "blog/base.html" %} {% block content %}
-<header class="bg-light text-dark py-5 mb-4 rounded-bottom shadow">
-  <div class="container text-center">
-    <h1 class="display-4 fw-bold mb-3">Benvenuto nel mio Blog</h1>
-    <p class="lead mb-4">Blog realizzato in Django</p>
-    <a href="#posts" class="btn btn-light btn-lg shadow" style="border-radius: 25px;"><i class="bi bi-chevron-down"></i> Scopri i Post</a>
+{% extends "blog/base.html" %}
+{% load static %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'blog/index.css' %}">
+<link rel="stylesheet" href="{% static 'blog/sidebar.css' %}">
+
+<header class="hero-section py-5 mb-5 shadow-lg">
+  <div class="container hero-content">
+    <div class="row align-items-center">
+      <div class="col-lg-8 mx-auto text-center">
+        <h1 class="display-3 fw-bold mb-4 hero-title">Benvenuto nel mio Blog</h1>
+        <blockquote class="mr-robot-quote mb-4">
+          <p class="quote-text">"Hello, friend. Hello friend? That's lame. Maybe I should give you a name. But that's a slippery slope. You're only in my head."</p>
+          <footer class="quote-author">— Elliot Alderson, <cite>Mr. Robot</cite></footer>
+        </blockquote>
+        <a href="#posts" class="btn btn-light btn-lg px-4 py-3">
+          <i class="bi bi-arrow-down-circle me-2"></i>Scopri i Post
+        </a>
+      </div>
+    </div>
   </div>
 </header>
 
+<div class="container">
   <div class="row">
     <section class="col-lg-8" id="posts">
-      {% for post in post_list %}
-      <div
-        class="card mb-4 shadow border-0 bg-white"
-        style="transition: all 0.3s; border-radius: 15px; overflow: hidden"
-      >
-        {% if post.image %}
-        <img
-          src="{{ post.image.url }}"
-          class="card-img-top"
-          alt="{{ post.title }}"
-          style="height: 200px; object-fit: cover; transition: transform 0.3s; max-width: 100%;"
-        />
-        {% endif %}
-        <div class="card-body">
-          <h2 class="card-title h4 mb-2 text-primary">{{ post.title }}</h2>
-          <p class="text-muted small mb-3">
-            <i class="bi bi-person-fill"></i> {{ post.author }} |
-            <i class="bi bi-calendar-event"></i> {{ post.created_on }}
-          </p>
-          <p class="card-text mb-4">{{ post.content|slice:":200" }}</p>
-          <a
-            href="{% url 'post_detail' post.slug %}"
-            class="btn btn-primary btn-sm"
-            ><i class="bi bi-arrow-right"></i> Leggi tutto</a
-          >
+      {% if page_obj %}
+        {% for post in page_obj %}
+        <article class="post-card card mb-3">
+          <div class="row g-0">
+            {% if post.image %}
+            <div class="col-md-4 post-image-wrapper">
+              <img src="{{ post.image.url }}" class="post-image-cover" alt="{{ post.title }}">
+            </div>
+            {% endif %}
+            <div class="{% if post.image %}col-md-8{% else %}col-12{% endif %}">
+              <div class="card-body">
+                <h2 class="card-title h4 mb-2 fw-bold">
+                  <a href="{% url 'post_detail' post.slug %}" class="text-decoration-none">
+                    {{ post.title }}
+                  </a>
+                </h2>
+                <div class="post-meta mb-2">
+                  <span class="post-meta-item">
+                    <i class="bi bi-person-circle"></i>
+                    <strong>{{ post.author }}</strong>
+                  </span>
+                  <span class="post-meta-item">
+                    <i class="bi bi-calendar3"></i>
+                    {{ post.created_on|date:"d M Y" }}
+                  </span>
+                </div>
+                <p class="card-text mb-3">{{ post.content|slice:":200" }}{% if post.content|length > 200 %}...{% endif %}</p>
+                <a href="{% url 'post_detail' post.slug %}" class="read-more-btn">
+                  <span>
+                    <i class="bi bi-arrow-right-circle me-2"></i>Leggi tutto
+                  </span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </article>
+        {% empty %}
+        <div class="empty-state">
+          <i class="bi bi-inbox"></i>
+          <h3 class="mb-3">Nessun post disponibile</h3>
+          <p class="text-muted">Torna presto per vedere nuovi contenuti!</p>
         </div>
-      </div>
-      {% endfor %}
+        {% endfor %}
+      {% else %}
+        <div class="empty-state">
+          <i class="bi bi-inbox"></i>
+          <h3 class="mb-3">Nessun post disponibile</h3>
+          <p class="text-muted">Torna presto per vedere nuovi contenuti!</p>
+        </div>
+      {% endif %}
+      
+      {% if page_obj.has_other_pages %}
+      <nav aria-label="Navigazione pagine" class="mt-5">
+        <ul class="pagination justify-content-center">
+          {% if page_obj.has_previous %}
+            <li class="page-item">
+              <a class="page-link" href="?page=1" aria-label="Prima pagina">
+                <i class="bi bi-chevron-double-left"></i>
+              </a>
+            </li>
+            <li class="page-item">
+              <a class="page-link" href="?page={{ page_obj.previous_page_number }}" aria-label="Pagina precedente">
+                <i class="bi bi-chevron-left"></i> Precedente
+              </a>
+            </li>
+          {% else %}
+            <li class="page-item disabled">
+              <span class="page-link">
+                <i class="bi bi-chevron-double-left"></i>
+              </span>
+            </li>
+            <li class="page-item disabled">
+              <span class="page-link">
+                <i class="bi bi-chevron-left"></i> Precedente
+              </span>
+            </li>
+          {% endif %}
+          
+          <li class="page-item active">
+            <span class="page-link">
+              Pagina {{ page_obj.number }} di {{ page_obj.paginator.num_pages }}
+            </span>
+          </li>
+          
+          {% if page_obj.has_next %}
+            <li class="page-item">
+              <a class="page-link" href="?page={{ page_obj.next_page_number }}" aria-label="Pagina successiva">
+                Successivo <i class="bi bi-chevron-right"></i>
+              </a>
+            </li>
+            <li class="page-item">
+              <a class="page-link" href="?page={{ page_obj.paginator.num_pages }}" aria-label="Ultima pagina">
+                <i class="bi bi-chevron-double-right"></i>
+              </a>
+            </li>
+          {% else %}
+            <li class="page-item disabled">
+              <span class="page-link">
+                Successivo <i class="bi bi-chevron-right"></i>
+              </span>
+            </li>
+            <li class="page-item disabled">
+              <span class="page-link">
+                <i class="bi bi-chevron-double-right"></i>
+              </span>
+            </li>
+          {% endif %}
+        </ul>
+      </nav>
+      {% endif %}
     </section>
-    <aside class="col-lg-4">{% include 'blog/sidebar.html' %}</aside>
+    <aside class="col-lg-4">
+      {% include 'blog/sidebar.html' %}
+    </aside>
   </div>
+</div>
 {% endblock %}
