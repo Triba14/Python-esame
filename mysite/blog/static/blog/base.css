@@ -1,0 +1,214 @@
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
+
+:root {
+  --verde: #00ff41;
+  --verde-chiaro: #39ff14;
+  --nero: #000000;
+  --grigio: #1a1a1a;
+  --glow: rgba(0, 255, 65, 0.5);
+}
+
+* {
+  font-family: 'Share Tech Mono', 'Courier New', monospace !important;
+}
+
+html {
+  scroll-behavior: smooth;
+  background: var(--nero);
+  color: var(--verde);
+}
+
+body {
+  background: var(--nero);
+  min-height: 100vh;
+  color: var(--verde);
+  text-shadow: 0 0 5px var(--glow);
+}
+
+.navbar {
+  background: var(--nero) !important;
+  border-bottom: 2px solid var(--verde) !important;
+  box-shadow: 0 0 10px var(--glow) !important;
+  padding: 0.75rem 0 !important;
+}
+
+.navbar-brand {
+  font-weight: 700;
+  font-size: 1.3rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--verde) !important;
+  text-shadow: 0 0 10px var(--verde);
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--verde);
+  background: rgba(0, 255, 65, 0.05);
+}
+
+.navbar-brand:hover {
+  color: var(--verde-chiaro) !important;
+  text-shadow: 0 0 15px var(--verde-chiaro);
+  box-shadow: 0 0 20px var(--glow);
+}
+
+.nav-link {
+  color: var(--verde) !important;
+  text-shadow: 0 0 5px var(--glow);
+  padding: 8px 15px !important;
+  margin: 0 5px;
+  border: 1px solid transparent;
+}
+
+.nav-link:hover {
+  background: rgba(0, 255, 65, 0.1) !important;
+  border: 1px solid var(--verde);
+  color: var(--verde-chiaro) !important;
+  text-shadow: 0 0 10px var(--verde-chiaro);
+}
+
+.nav-link.active {
+  background: rgba(0, 255, 65, 0.15) !important;
+  border: 1px solid var(--verde);
+  color: var(--verde-chiaro) !important;
+}
+
+footer {
+  background: var(--nero) !important;
+  border-top: 2px solid var(--verde) !important;
+  box-shadow: 0 0 10px var(--glow) !important;
+  color: var(--verde) !important;
+  margin-top: auto;
+}
+
+footer h5 {
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--verde) !important;
+  text-shadow: 0 0 10px var(--glow);
+}
+
+footer p, footer li, footer span {
+  color: var(--verde) !important;
+  text-shadow: 0 0 5px var(--glow);
+}
+
+footer a {
+  color: var(--verde) !important;
+  text-decoration: none;
+  border: 1px solid transparent;
+  padding: 0.25rem 0.5rem;
+}
+
+footer a:hover {
+  color: var(--verde-chiaro) !important;
+  border: 1px solid var(--verde);
+  background: rgba(0, 255, 65, 0.1);
+  box-shadow: 0 0 15px var(--glow);
+}
+
+footer .btn-outline-light {
+  border: 1px solid var(--verde) !important;
+  color: var(--verde) !important;
+  background: transparent !important;
+}
+
+footer .btn-outline-light:hover {
+  background: rgba(0, 255, 65, 0.1) !important;
+  border-color: var(--verde-chiaro) !important;
+  color: var(--verde-chiaro) !important;
+}
+
+@keyframes terminalGlow {
+  0%, 100% {
+    text-shadow: 0 0 5px var(--glow);
+  }
+  50% {
+    text-shadow: 0 0 15px var(--verde), 0 0 25px var(--verde);
+  }
+}
+
+body::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(0, 255, 65, 0.03) 0px,
+    transparent 1px,
+    transparent 2px,
+    rgba(0, 255, 65, 0.03) 3px
+  );
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.5;
+}
+
+.card {
+  background: var(--grigio) !important;
+  border: 1px solid var(--verde) !important;
+  box-shadow: 0 0 10px var(--glow) !important;
+  color: var(--verde) !important;
+}
+
+.card-body {
+  color: var(--verde) !important;
+}
+
+.text-dark, .text-muted {
+  color: var(--verde) !important;
+}
+
+.text-white-50 {
+  color: var(--verde) !important;
+  opacity: 0.8;
+}
+
+.text-light {
+  color: var(--verde) !important;
+}
+
+.btn {
+  font-family: 'Share Tech Mono', monospace !important;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border-radius: 0 !important;
+}
+
+.btn-primary {
+  background: transparent !important;
+  border: 2px solid var(--verde) !important;
+  color: var(--verde) !important;
+  box-shadow: 0 0 10px var(--glow);
+}
+
+.btn-primary:hover {
+  background: rgba(0, 255, 65, 0.1) !important;
+  border-color: var(--verde-chiaro) !important;
+  color: var(--verde-chiaro) !important;
+  box-shadow: 0 0 20px var(--verde);
+}
+
+.django-ascii-wrapper {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.django-ascii {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.7rem;
+  color: var(--verde);
+  text-shadow: 0 0 5px var(--glow);
+  background: transparent;
+  border: none;
+  padding: 0;
+  margin: 0;
+  line-height: 1.2;
+  opacity: 0.9;
+  display: block;
+  text-align: left;
+  white-space: pre;
+}

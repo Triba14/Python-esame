@@ -1,0 +1,106 @@
+:root {
+  --verde: #00ff41;
+  --verde-chiaro: #39ff14;
+  --nero: #000000;
+  --grigio: #1a1a1a;
+  --glow: rgba(0, 255, 65, 0.5);
+}
+
+.error-container {
+  min-height: 70vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.error-card {
+  border: 2px solid var(--verde) !important;
+  background: var(--grigio) !important;
+  box-shadow: 0 0 20px var(--glow) !important;
+  color: var(--verde) !important;
+  padding: 3rem !important;
+  text-align: center;
+  max-width: 600px;
+  width: 100%;
+}
+
+.error-icon {
+  font-size: 5rem;
+  color: var(--verde);
+  text-shadow: 0 0 15px var(--glow);
+  margin-bottom: 1.5rem;
+  animation: terminalGlow 2s ease-in-out infinite;
+}
+
+.error-code {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 6rem;
+  font-weight: 700;
+  color: var(--verde);
+  text-shadow: 0 0 20px var(--verde), 0 0 30px var(--verde);
+  margin-bottom: 1rem;
+  line-height: 1;
+}
+
+.error-title {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 1.5rem;
+  color: var(--verde);
+  text-shadow: 0 0 10px var(--glow);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 1.5rem;
+}
+
+.error-message {
+  color: var(--verde);
+  text-shadow: 0 0 5px var(--glow);
+  font-family: 'Share Tech Mono', monospace;
+  line-height: 1.7;
+  margin-bottom: 2rem;
+  opacity: 0.9;
+}
+
+.error-button {
+  background: transparent !important;
+  border: 2px solid var(--verde) !important;
+  color: var(--verde) !important;
+  font-family: 'Share Tech Mono', monospace;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  padding: 0.75rem 2rem !important;
+  box-shadow: 0 0 10px var(--glow);
+  text-decoration: none !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  border-radius: 0 !important;
+}
+
+.error-button::before {
+  content: '> ';
+  margin-right: 0.5rem;
+  opacity: 0;
+}
+
+.error-button:hover::before {
+  opacity: 1;
+}
+
+.error-button:hover {
+  background: rgba(0, 255, 65, 0.1) !important;
+  border-color: var(--verde-chiaro) !important;
+  color: var(--verde-chiaro) !important;
+  box-shadow: 0 0 20px var(--verde);
+  text-shadow: 0 0 10px var(--verde-chiaro);
+}
+
+@keyframes terminalGlow {
+  0%, 100% {
+    text-shadow: 0 0 10px var(--glow);
+  }
+  50% {
+    text-shadow: 0 0 20px var(--verde), 0 0 30px var(--verde);
+  }
+}
+

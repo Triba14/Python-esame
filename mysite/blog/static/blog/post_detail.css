@@ -1,0 +1,205 @@
+:root {
+  --verde: #00ff41;
+  --verde-chiaro: #39ff14;
+  --nero: #000000;
+  --grigio: #1a1a1a;
+  --glow: rgba(0, 255, 65, 0.5);
+}
+
+.post-header-title {
+  font-family: 'Share Tech Mono', monospace;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  line-height: 1.2;
+}
+
+.post-header {
+  background: var(--nero);
+  color: var(--verde);
+  padding: 2rem 0;
+  margin-bottom: 2rem;
+  border-bottom: 2px solid var(--verde);
+  box-shadow: 0 0 20px var(--glow);
+}
+
+.post-header h1 {
+  color: var(--verde);
+  text-shadow: 0 0 10px var(--verde), 0 0 20px var(--verde);
+  font-size: 2rem;
+}
+
+.post-content-card {
+  border: 2px solid var(--verde) !important;
+  box-shadow: 0 0 20px var(--glow) !important;
+  background: var(--grigio) !important;
+}
+
+.post-image-wrapper {
+  max-width: 500px;
+  max-height: 400px;
+  margin: 0 auto 1.5rem;
+  background: var(--nero);
+  border: 2px solid var(--verde);
+  filter: grayscale(50%);
+  overflow: hidden;
+  box-shadow: 0 0 10px var(--glow);
+}
+
+.post-image-wrapper img {
+  width: 100%;
+  height: auto;
+  max-height: 400px;
+  object-fit: contain;
+  display: block;
+  transition: filter 0.3s ease;
+}
+
+.post-image-wrapper:hover img {
+  filter: grayscale(30%);
+}
+
+.post-body {
+  padding: 1.5rem;
+  background: var(--grigio);
+  color: var(--verde);
+}
+
+.post-title {
+  font-family: 'Share Tech Mono', monospace;
+  font-weight: 700;
+  color: var(--verde);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-shadow: 0 0 10px var(--glow);
+}
+
+.post-meta-detail {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  padding: 1rem;
+  background: var(--nero);
+  border: 2px solid var(--verde);
+  margin-bottom: 1.5rem;
+  box-shadow: 0 0 10px var(--glow);
+}
+
+.meta-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--verde);
+  text-shadow: 0 0 5px var(--glow);
+}
+
+.meta-item i {
+  font-size: 1rem;
+  color: var(--verde);
+  text-shadow: 0 0 10px var(--glow);
+}
+
+.meta-item strong {
+  color: var(--verde);
+  text-shadow: 0 0 5px var(--glow);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 0.9rem;
+  display: block;
+}
+
+.meta-item small {
+  color: var(--verde);
+  opacity: 0.7;
+  text-shadow: 0 0 3px var(--glow);
+  font-size: 0.75rem;
+  display: block;
+  margin-bottom: 0.25rem;
+}
+
+.post-content {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--verde);
+  text-shadow: 0 0 3px var(--glow);
+  font-family: 'Share Tech Mono', monospace;
+}
+
+.post-content p {
+  margin-bottom: 1.25rem;
+  color: var(--verde);
+}
+
+.back-button {
+  background: transparent !important;
+  border: 2px solid var(--verde) !important;
+  color: var(--verde) !important;
+  border-radius: 0 !important;
+  padding: 0.5rem 1.5rem !important;
+  font-size: 0.85rem !important;
+  text-decoration: none !important;
+  font-family: 'Share Tech Mono', monospace;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  box-shadow: 0 0 10px var(--glow);
+  display: inline-flex !important;
+  align-items: center !important;
+}
+
+.back-button::before {
+  content: '< ';
+  margin-right: 0.5rem;
+  opacity: 0;
+}
+
+.back-button:hover::before {
+  opacity: 1;
+}
+
+.back-button:hover {
+  background: rgba(0, 255, 65, 0.1) !important;
+  border-color: var(--verde-chiaro) !important;
+  color: var(--verde-chiaro) !important;
+  box-shadow: 0 0 20px var(--verde);
+  text-shadow: 0 0 10px var(--verde-chiaro);
+}
+
+.breadcrumb-custom {
+  background: transparent;
+  padding: 0;
+  margin-bottom: 0.75rem;
+}
+
+.breadcrumb-custom .breadcrumb {
+  background: transparent;
+  margin: 0;
+  padding: 0;
+}
+
+.breadcrumb-custom .breadcrumb-item {
+  color: var(--verde);
+  text-shadow: 0 0 5px var(--glow);
+}
+
+.breadcrumb-custom .breadcrumb-item.active {
+  color: var(--verde-chiaro);
+  text-shadow: 0 0 10px var(--verde-chiaro);
+}
+
+.breadcrumb-custom a {
+  color: var(--verde);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+}
+
+.breadcrumb-custom a:hover {
+  color: var(--verde-chiaro);
+  text-shadow: 0 0 10px var(--verde-chiaro);
+  border-bottom-color: var(--verde);
+}
+
+.breadcrumb-custom .breadcrumb-item + .breadcrumb-item::before {
+  content: '>';
+  color: var(--verde);
+  text-shadow: 0 0 5px var(--glow);
+}
