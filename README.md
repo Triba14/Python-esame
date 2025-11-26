@@ -1,9 +1,5 @@
 # Blog Django
 
-Autore: Giuseppe Tribastone
-
-## Cosa fa
-
 Blog fatto con Django. Si possono creare, vedere, modificare e cancellare i post.
 
 ## Funzionalità
